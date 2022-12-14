@@ -43,10 +43,7 @@ class RouterTest extends TestCase
 
         $this->assertEquals("Hello", $router->call("/"));
 
-        $this->assertEquals(
-            "12: mon-article",
-            $router->call("/blog/12/mon-article")
-        );
+        $this->assertEquals("12 : mon-article",$router->call("/blog/12/mon-article"));
 
         $this->assertEquals(
             "bar",
@@ -58,13 +55,12 @@ class RouterTest extends TestCase
      * @return void
      * @throws RouteNotFoundException
      */
-    public function testIfRouteNotFoundByMatch()
+    public function testIfRouteNotFoundByMatch(): void
     {
         $router = new Router();
         $this-> expectException(RouteNotFoundException::class);
         $router->match("/");
     }
-
 
     public function testIfRouteNotFoundByGet()
     {
@@ -76,7 +72,7 @@ class RouterTest extends TestCase
     /**
      * @return void
      */
-    public function testIfRouteAlreadyExist()
+    public function testIfRouteAlreadyExist(): void
     {
         $router = new Router();
         $router->add(new Route("home", "/", function (){}));

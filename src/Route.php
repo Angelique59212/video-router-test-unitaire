@@ -2,7 +2,6 @@
 
 namespace Angelika\Router;
 
-use PhpParser\Node\Expr\Closure;
 use ReflectionClass;
 use ReflectionFunction;
 use ReflectionParameter;
@@ -63,6 +62,7 @@ class Route
 
     /**
      * @return void
+     * @throws \ReflectionException
      */
     public function call(string $path)
     {
